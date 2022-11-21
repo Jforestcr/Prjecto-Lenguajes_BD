@@ -1,1 +1,6 @@
 /Proyecto_LenguajesBD/target/
+*.properties
+*.properties
+proyecto/nbproject/private/private.properties
+proyecto/nbproject/private/private.xml
+proyecto/src/conexion/conexionBD.java
