@@ -253,7 +253,7 @@ public class tickets extends javax.swing.JFrame {
            consultar_ticket(NuevaConexion.conectarBD());
            // consultar_usuario();
         } catch (IOException ex) {
-            Logger.getLogger(mainform.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed

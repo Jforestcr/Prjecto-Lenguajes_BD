@@ -13,11 +13,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class mainform extends javax.swing.JFrame {
+public class ConsultarUsuario extends javax.swing.JFrame {
 
     conexionBD NuevaConexion = new conexionBD();
     
-    public mainform() {
+    public ConsultarUsuario() {
         initComponents();
         Obterner_id_users(NuevaConexion.conectarBD());
     }
@@ -160,7 +160,7 @@ public class mainform extends javax.swing.JFrame {
            consultar_usuario(NuevaConexion.conectarBD());
            // consultar_usuario();
         } catch (IOException ex) {
-            Logger.getLogger(mainform.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_buscarActionPerformed
 
@@ -193,20 +193,21 @@ public class mainform extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mainform().setVisible(true);
+                new ConsultarUsuario().setVisible(true);
             }
             
             

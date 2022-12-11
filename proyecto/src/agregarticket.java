@@ -230,7 +230,7 @@ public class agregarticket extends javax.swing.JFrame {
            agregar_ticket(NuevaConexion.conectarBD());
            // consultar_usuario();
         } catch (IOException ex) {
-            Logger.getLogger(mainform.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // TODO add your handling code here:
