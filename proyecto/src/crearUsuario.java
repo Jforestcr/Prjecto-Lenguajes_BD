@@ -342,6 +342,9 @@ public class crearUsuario extends javax.swing.JFrame {
                         cst.setInt(7, numestado);
                         cst.executeUpdate();
                         JOptionPane.showMessageDialog(null, "Usuario creado Correctamente");
+                        menu Menu = new menu();
+                        Menu.setVisible(true);
+                        this.setVisible(false);
                     } while (id > 0);
                 } catch (SQLException ex) {
                     System.out.println("Error: " + ex.getMessage());

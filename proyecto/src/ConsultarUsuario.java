@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class ConsultarUsuario extends javax.swing.JFrame {
 
     conexionBD NuevaConexion = new conexionBD();
-    
+
     public ConsultarUsuario() {
         initComponents();
         Obterner_id_users(NuevaConexion.conectarBD());
@@ -41,6 +41,8 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        DeshabilitarUsuario = new javax.swing.JButton();
+        EliminarUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +81,20 @@ public class ConsultarUsuario extends javax.swing.JFrame {
             }
         });
 
+        DeshabilitarUsuario.setText("Deshabilitar Usuario");
+        DeshabilitarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeshabilitarUsuarioActionPerformed(evt);
+            }
+        });
+
+        EliminarUsuario.setText("Eliminar usuario");
+        EliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarUsuarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -96,22 +112,26 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                             .addComponent(txt_lastname, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                        .addComponent(combox_ID_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(buscar)
+                                .addGap(18, 18, 18)
+                                .addComponent(DeshabilitarUsuario)
+                                .addGap(18, 18, 18)
+                                .addComponent(EliminarUsuario)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(combox_ID_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(75, 75, 75))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(34, 34, 34))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(buscar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(jLabel1)))
+                .addGap(144, 144, 144)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -132,7 +152,10 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                     .addComponent(txt_lastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(29, 29, 29)
-                .addComponent(buscar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscar)
+                    .addComponent(DeshabilitarUsuario)
+                    .addComponent(EliminarUsuario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -154,11 +177,10 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-
-         try {
+        try {
             // TODO add your handling code here:
-           consultar_usuario(NuevaConexion.conectarBD());
-           // consultar_usuario();
+            consultar_usuario(NuevaConexion.conectarBD());
+            // consultar_usuario();
         } catch (IOException ex) {
             Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -169,12 +191,25 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_combox_ID_empleadoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-                menu tk = new menu();
+        menu tk = new menu();
         tk.setVisible(true);
         setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void DeshabilitarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeshabilitarUsuarioActionPerformed
+        // TODO add your handling code here:
+        Disable_users(NuevaConexion.conectarBD());
+    }//GEN-LAST:event_DeshabilitarUsuarioActionPerformed
+
+    private void EliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarUsuarioActionPerformed
+        try {
+            // TODO add your handling code here:
+            delete_users(NuevaConexion.conectarBD());
+        } catch (IOException ex) {
+            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_EliminarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,41 +244,29 @@ public class ConsultarUsuario extends javax.swing.JFrame {
             public void run() {
                 new ConsultarUsuario().setVisible(true);
             }
-            
-            
         });
     }
-    
-    
+
+    //Consultar Usuario
     public void consultar_usuario(Connection a) throws IOException {
         int id = -1;
-
         try {
-                       
             // Llamada al procedimiento almacenado
             CallableStatement cst = a.prepareCall("{call mostrar_usuario (?,?,?)}");
-
             do {
-                
                 // Parametro 1 del procedimiento almacenado
                 cst.setInt(1, Integer.parseInt(combox_ID_empleado.getSelectedItem().toString()));
-                
                 // Definimos los tipos de los parametros de salida del procedimiento almacenado
                 cst.registerOutParameter(2, java.sql.Types.VARCHAR);
                 cst.registerOutParameter(3, java.sql.Types.VARCHAR);
-
-                
                 // Ejecuta el procedimiento almacenado
                 cst.execute();
-                
                 // Se obtienen la salida del procedimineto almacenado
                 String nombre = cst.getString(2);
                 String apellido = cst.getString(3);
-
                 txt_Name.setText(nombre);
                 txt_lastname.setText(apellido);
             } while (id > 0);
-
         } catch (SQLException ex) {
             System.out.println("Error: " + ex.getMessage());
         } finally {
@@ -252,10 +275,10 @@ public class ConsultarUsuario extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 System.out.println("Error: " + ex.getMessage());
             }
-
+        }
     }
-            }
-    
+
+    //Obtener ID de usuarios
     public void Obterner_id_users(Connection a) {
         try {
             Statement sentencia;
@@ -266,13 +289,69 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 String identificacion = RS.getString("usu_id");
                 combox_ID_empleado.addItem(String.valueOf(identificacion));
             }
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
         }
     }
 
+    //Delete Usuarios
+    public void delete_users(Connection a) throws IOException {
+        int id = -1;
+        try {
+            // Llamada al procedimiento almacenado
+            CallableStatement cst = a.prepareCall("{call del_usuarios2 (?)}");
+            do {
+                // Parametro 1 del procedimiento almacenado
+                cst.setInt(1, Integer.parseInt(combox_ID_empleado.getSelectedItem().toString()));
+                // Ejecuta el procedimiento almacenado
+                cst.execute();
+                JOptionPane.showMessageDialog(null, "Usuario eliminado Correctamente");
+                menu Menu = new menu();
+                Menu.setVisible(true);
+                this.setVisible(false);
+            } while (id > 0);
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        } finally {
+            try {
+                a.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex.getMessage());
+            }
+        }
+    }
+
+    //Deshabilitar Usuarios
+    public void Disable_users(Connection a) {
+        int id = -1;
+        try {
+            // Llamada al procedimiento almacenado
+            CallableStatement cst = a.prepareCall("{call sp_d_usuario (?)}");
+            do {
+                // Parametro 1 del procedimiento almacenado
+                cst.setInt(1, Integer.parseInt(combox_ID_empleado.getSelectedItem().toString()));
+                // Ejecuta el procedimiento almacenado
+                cst.execute();
+                JOptionPane.showMessageDialog(null, "Usuario dehabilitado");
+                menu Menu = new menu();
+                Menu.setVisible(true);
+                this.setVisible(false);
+                this.repaint();
+            } while (id > 0);
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        } finally {
+            try {
+                a.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex.getMessage());
+            }
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DeshabilitarUsuario;
+    private javax.swing.JButton EliminarUsuario;
     private javax.swing.JButton buscar;
     private javax.swing.JComboBox<String> combox_ID_empleado;
     private javax.swing.JButton jButton1;
