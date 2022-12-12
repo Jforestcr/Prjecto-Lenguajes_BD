@@ -11,13 +11,12 @@ import java.util.logging.Logger;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author ferar
  */
 public class agregarticket extends javax.swing.JFrame {
-    
+
     conexionBD NuevaConexion = new conexionBD();
 
     /**
@@ -66,6 +65,18 @@ public class agregarticket extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 102, 0));
         jLabel1.setText("Crear Ticket");
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Numero Ticket");
@@ -128,9 +139,7 @@ public class agregarticket extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addGap(73, 73, 73)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -225,10 +234,10 @@ public class agregarticket extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         try {
+        try {
             // TODO add your handling code here:
-           agregar_ticket(NuevaConexion.conectarBD());
-           // consultar_usuario();
+            agregar_ticket(NuevaConexion.conectarBD());
+            // consultar_usuario();
         } catch (IOException ex) {
             Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -237,12 +246,28 @@ public class agregarticket extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-menu men = new menu();
-men.setVisible(true);
-setVisible(false);
+        menu men = new menu();
+        men.setVisible(true);
+        setVisible(false);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
 
     /**
      * @param args the command line arguments
@@ -278,22 +303,18 @@ setVisible(false);
             }
         });
     }
-    
+
     public void agregar_ticket(Connection a) throws IOException {
-int id = -1;
+        int id = -1;
 
         try {
-          
-            do{
-            // Llamada al procedimiento almacenado
-            CallableStatement cst = a.prepareCall("{call create_tm_ticket (?,?,?,?,?,?,?,?,?)}");
 
-            
+            do {
+                // Llamada al procedimiento almacenado
+                CallableStatement cst = a.prepareCall("{call create_tm_ticket (?,?,?,?,?,?,?,?,?)}");
 
                 cst.registerOutParameter(9, java.sql.Types.VARCHAR);
 
-            
-                
                 int idtick = Integer.parseInt(jTextField1.getText());
                 int idusu = Integer.parseInt(jTextField2.getText());
                 int cat = Integer.parseInt(jTextField3.getText());
@@ -302,12 +323,8 @@ int id = -1;
                 String estado = jTextField6.getText();
                 String fecha = jTextField7.getText();
                 int numestado = Integer.parseInt(jTextField8.getText());
-              
 
-                
                 // Ejecuta el procedimiento almacenado
-                
-                
                 cst.setInt(1, idtick);
                 cst.setInt(2, idusu);
                 cst.setInt(3, cat);
@@ -316,12 +333,12 @@ int id = -1;
                 cst.setString(6, estado);
                 cst.setString(7, fecha);
                 cst.setInt(8, numestado);
-                
+
                 cst.executeUpdate();
-               
+
                 String result = cst.getString(9);
-                System.out.println("Resultado: "+result);
-                
+                System.out.println("Resultado: " + result);
+
             } while (id > 0);
 
         } catch (SQLException ex) {
@@ -329,13 +346,13 @@ int id = -1;
         } finally {
             try {
                 a.close();
-               
+
             } catch (SQLException ex) {
                 System.out.println("Error: " + ex.getMessage());
             }
 
+        }
     }
-            }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
