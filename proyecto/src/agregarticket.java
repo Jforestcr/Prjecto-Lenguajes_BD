@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -78,6 +79,18 @@ public class agregarticket extends javax.swing.JFrame {
             }
         });
 
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
+
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField8KeyTyped(evt);
+            }
+        });
+
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Numero Ticket");
 
@@ -139,33 +152,35 @@ public class agregarticket extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addGap(73, 73, 73)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(78, 78, 78)
-                                        .addComponent(jLabel7))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                            .addComponent(jTextField2))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel9)
-                                                .addComponent(jLabel8))
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))))
-                                .addGap(39, 39, 39)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                    .addComponent(jTextField6)
-                                    .addComponent(jTextField8))
-                                .addGap(0, 137, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)))))
+                                .addComponent(jButton2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(78, 78, 78)
+                                                .addComponent(jLabel7))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                                    .addComponent(jTextField2))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel9)
+                                                        .addComponent(jLabel8))
+                                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                        .addGap(39, 39, 39)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                            .addComponent(jTextField6)
+                                            .addComponent(jTextField8))))
+                                .addGap(0, 137, Short.MAX_VALUE)))))
                 .addGap(34, 34, 34))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -237,6 +252,7 @@ public class agregarticket extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             agregar_ticket(NuevaConexion.conectarBD());
+
             // consultar_usuario();
         } catch (IOException ex) {
             Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -268,6 +284,20 @@ public class agregarticket extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8KeyTyped
 
     /**
      * @param args the command line arguments
@@ -304,53 +334,77 @@ public class agregarticket extends javax.swing.JFrame {
         });
     }
 
+    public boolean validarEspacios() {
+        return jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty()
+                || jTextField3.getText().isEmpty() || jTextField4.getText().isEmpty()
+                || jTextField6.getText().isEmpty() || jTextField8.getText().isEmpty()
+                || jTextField7.getText().isEmpty() || jTextArea1.getText().isEmpty();
+    }
+
+    public void limpiarCampos() {
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextArea1.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jTextField8.setText("");
+
+    }
+
     public void agregar_ticket(Connection a) throws IOException {
         int id = -1;
 
-        try {
-
-            do {
-                // Llamada al procedimiento almacenado
-                CallableStatement cst = a.prepareCall("{call create_tm_ticket (?,?,?,?,?,?,?,?,?)}");
-
-                cst.registerOutParameter(9, java.sql.Types.VARCHAR);
-
-                int idtick = Integer.parseInt(jTextField1.getText());
-                int idusu = Integer.parseInt(jTextField2.getText());
-                int cat = Integer.parseInt(jTextField3.getText());
-                String titulo = jTextField4.getText();
-                String descripcion = jTextArea1.getText();
-                String estado = jTextField6.getText();
-                String fecha = jTextField7.getText();
-                int numestado = Integer.parseInt(jTextField8.getText());
-
-                // Ejecuta el procedimiento almacenado
-                cst.setInt(1, idtick);
-                cst.setInt(2, idusu);
-                cst.setInt(3, cat);
-                cst.setString(4, titulo);
-                cst.setString(5, descripcion);
-                cst.setString(6, estado);
-                cst.setString(7, fecha);
-                cst.setInt(8, numestado);
-
-                cst.executeUpdate();
-
-                String result = cst.getString(9);
-                System.out.println("Resultado: " + result);
-
-            } while (id > 0);
-
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex.getMessage());
-        } finally {
+        if (!validarEspacios()) {
             try {
-                a.close();
+
+                do {
+                    // Llamada al procedimiento almacenado
+                    CallableStatement cst = a.prepareCall("{call create_tm_ticket (?,?,?,?,?,?,?,?,?)}");
+
+                    cst.registerOutParameter(9, java.sql.Types.VARCHAR);
+
+                    int idtick = Integer.parseInt(jTextField1.getText());
+                    int idusu = Integer.parseInt(jTextField2.getText());
+                    int cat = Integer.parseInt(jTextField3.getText());
+                    String titulo = jTextField4.getText();
+                    String descripcion = jTextArea1.getText();
+                    String estado = jTextField6.getText();
+                    String fecha = jTextField7.getText();
+                    int numestado = Integer.parseInt(jTextField8.getText());
+
+                    // Ejecuta el procedimiento almacenado
+                    cst.setInt(1, idtick);
+                    cst.setInt(2, idusu);
+                    cst.setInt(3, cat);
+                    cst.setString(4, titulo);
+                    cst.setString(5, descripcion);
+                    cst.setString(6, estado);
+                    cst.setString(7, fecha);
+                    cst.setInt(8, numestado);
+
+                    cst.executeUpdate();
+
+                    String result = cst.getString(9);
+                    JOptionPane.showMessageDialog(null, "Tiquete creado correctamente");
+                    limpiarCampos();
+
+                } while (id > 0);
 
             } catch (SQLException ex) {
                 System.out.println("Error: " + ex.getMessage());
-            }
+            } finally {
+                try {
+                    a.close();
 
+                } catch (SQLException ex) {
+                    System.out.println("Error: " + ex.getMessage());
+                }
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe completar todos los campos.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
 

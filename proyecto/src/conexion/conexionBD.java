@@ -28,8 +28,8 @@ public class conexionBD {
     
         public Connection conectarBD() {
         final String DATABASE_URL = "jdbc:oracle:thin:@localhost:1521:orcl";
-        final String user = "hr";
-        final String pass = "12345";
+        final String user = "reuz";
+        final String pass = "reuz";
 
         try {
             nuevaConexion = DriverManager.getConnection(DATABASE_URL, user, pass);

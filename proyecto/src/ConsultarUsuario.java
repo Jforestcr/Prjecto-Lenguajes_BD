@@ -20,6 +20,8 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     public ConsultarUsuario() {
         initComponents();
         Obterner_id_users(NuevaConexion.conectarBD());
+        txt_Name.setEditable(false);
+        txt_lastname.setEditable(false);
     }
 
     /**
@@ -306,9 +308,8 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 // Ejecuta el procedimiento almacenado
                 cst.execute();
                 JOptionPane.showMessageDialog(null, "Usuario eliminado Correctamente");
-                menu Menu = new menu();
-                Menu.setVisible(true);
-                this.setVisible(false);
+                combox_ID_empleado.removeAllItems();
+                Obterner_id_users(NuevaConexion.conectarBD());
             } while (id > 0);
         } catch (SQLException ex) {
             System.out.println("Error: " + ex.getMessage());

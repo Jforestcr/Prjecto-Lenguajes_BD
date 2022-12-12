@@ -191,7 +191,10 @@ public class modificarticket extends javax.swing.JFrame {
                 // Definimos los tipos de los parametros de salida del procedimiento almacenado
                 // Ejecuta el procedimiento almacenado
                 cst.execute();
-                System.out.println("Titulo actualizado a: Abierto");
+                JOptionPane.showMessageDialog(null, "Titulo actualizado a: Abierto");
+                menu men = new menu();
+                men.setVisible(true);
+                this.setVisible(false);
 
             } while (id > 0);
 

@@ -23,8 +23,8 @@ public class borrarticket extends javax.swing.JFrame {
     conexionBD NuevaConexion = new conexionBD();
 
     public borrarticket() {
- initComponents();
- Obterner_id_ticket(NuevaConexion.conectarBD());
+        initComponents();
+        Obterner_id_ticket(NuevaConexion.conectarBD());
     }
 
     /**
@@ -138,10 +138,10 @@ public class borrarticket extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         try {
+        try {
             // TODO add your handling code here:
-           borrar_ticket(NuevaConexion.conectarBD());
-           // consultar_usuario();
+            borrar_ticket(NuevaConexion.conectarBD());
+            // consultar_usuario();
         } catch (IOException ex) {
             Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }        // TODO add your handling code here:
@@ -199,8 +199,9 @@ public class borrarticket extends javax.swing.JFrame {
 
                 // Ejecuta el procedimiento almacenado
                 cst.executeUpdate();
-
-
+                JOptionPane.showMessageDialog(null, "Tiquete borrado correctamente");
+                jComboBox1.removeAllItems();
+                Obterner_id_ticket(NuevaConexion.conectarBD());
 
             } while (id > 0);
 
@@ -217,7 +218,7 @@ public class borrarticket extends javax.swing.JFrame {
         }
     }
 
-        public void Obterner_id_ticket(Connection a) {
+    public void Obterner_id_ticket(Connection a) {
         try {
             Statement sentencia;
             String sql = "SELECT tick_id FROM tm_ticket";

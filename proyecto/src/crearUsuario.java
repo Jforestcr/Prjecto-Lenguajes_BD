@@ -70,7 +70,7 @@ public class crearUsuario extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 400));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Cédula");
+        jLabel1.setText("ID");
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre");
@@ -285,9 +285,9 @@ public class crearUsuario extends javax.swing.JFrame {
 
     private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
         if (isEmail(txtCorreo.getText())) {
-            
+
         } else {
-             JOptionPane.showMessageDialog(null, "¡Debes validar el email!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "¡Debes validar el email!", "Aviso", JOptionPane.WARNING_MESSAGE);
             txtCorreo.requestFocus();
         }
     }//GEN-LAST:event_txtCorreoFocusLost
@@ -306,15 +306,16 @@ public class crearUsuario extends javax.swing.JFrame {
                 || txtApellido.getText().isEmpty() || txtCorreo.getText().isEmpty()
                 || txtRol.getText().isEmpty() || txtEst.getText().isEmpty();
     }
+
     //validar Correo
-    public boolean isEmail (String correo){
+    public boolean isEmail(String correo) {
         Pattern pat = null;
         Matcher mat = null;
         pat = Pattern.compile("^[\\w\\-\\_\\+]+(\\.[\\w\\-\\_]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$");
         mat = pat.matcher(correo);
         return mat.find();
     }
-    
+
     public void agregar_usuario(Connection a) throws IOException {
         int id = -1;
         if (!validarEspacios()) {
@@ -341,10 +342,8 @@ public class crearUsuario extends javax.swing.JFrame {
                         cst.setInt(6, Rol);
                         cst.setInt(7, numestado);
                         cst.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "Usuario creado Correctamente");
-                        menu Menu = new menu();
-                        Menu.setVisible(true);
-                        this.setVisible(false);
+                        JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
+                        limpiarCampos();
                     } while (id > 0);
                 } catch (SQLException ex) {
                     System.out.println("Error: " + ex.getMessage());
@@ -368,6 +367,7 @@ public class crearUsuario extends javax.swing.JFrame {
         txtCedula.setText("");
         txtNombre.setText("");
         txtPassword.setText("");
+        txtConPassword.setText("");
         txtApellido.setText("");
         txtCorreo.setText("");
         txtRol.setText("");
